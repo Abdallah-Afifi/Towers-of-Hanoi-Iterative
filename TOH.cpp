@@ -22,22 +22,28 @@ void towersOfHanoi(int n) {
 
     for(int move = 1; move <= numMoves; move++) {
         if(move % 3 == 1) {
-            if(tower1.back() < tower2.back()) {
-                moveDisk(tower1, tower2);
-            } else {
+            if(tower1.empty() || (!tower2.empty() && tower1.back() > tower2.back())) {
                 moveDisk(tower2, tower1);
+                cout << "Move disk from tower 2 to tower 1" << endl;
+            } else {
+                moveDisk(tower1, tower2);
+                cout << "Move disk from tower 1 to tower 2" << endl;
             }
         } else if(move % 3 == 2) {
-            if(tower1.back() < tower3.back()) {
-                moveDisk(tower1, tower3);
-            } else {
+            if(tower1.empty() || (!tower3.empty() && tower1.back() > tower3.back())) {
                 moveDisk(tower3, tower1);
+                cout << "Move disk from tower 3 to tower 1" << endl;
+            } else {
+                moveDisk(tower1, tower3);
+                cout << "Move disk from tower 1 to tower 3" << endl;
             }
         } else {
-            if(tower2.back() < tower3.back()) {
-                moveDisk(tower2, tower3);
-            } else {
+            if(tower2.empty() || (!tower3.empty() && tower2.back() > tower3.back())) {
                 moveDisk(tower3, tower2);
+                cout << "Move disk from tower 3 to tower 2" << endl;
+            } else {
+                moveDisk(tower2, tower3);
+                cout << "Move disk from tower 2 to tower 3" << endl;
             }
         }
     }
